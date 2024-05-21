@@ -1,39 +1,39 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid">
-        <section class="section">
-            @can('peserta-create')
-            <a href="{{ route('participant.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-                Tambah Peserta Ujian</a>
-            @endcan
-            <div class="card mt-2">
-                <div class="card-header">
-                    Data Peserta Ujian
-                </div>
-                <div class="card-body">
-                    <table class='table table-light' id="table_participant" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Photo</th>
-                                <th>No Peserta</th>
-                                <th>Nama Peserta</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Kelas</th>
-                                <th>Jurusan</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+<div class="main-content container-fluid">
+    <section class="section">
+        @can('peserta-create')
+        <a href="{{ route('participant.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
+            Tambah Data Siswa</a>
+        @endcan
+        <div class="card mt-2">
+            <div class="card-header">
+                Data Peserta Ujian
             </div>
-        </section>
-    </div>
-    <script type="application/javascript">
-        $(document).ready(function() {
+            <div class="card-body">
+                <table class='table table-light' id="table_participant" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Photo</th>
+                            <th>No Peserta</th>
+                            <th>Nama Peserta</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Kelas</th>
+                            <th>Jurusan</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="application/javascript">
+    $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {
                 let data = sessionStorage.getItem('success');
@@ -133,5 +133,5 @@
                 }
             });
         }
-    </script>
+</script>
 @endsection

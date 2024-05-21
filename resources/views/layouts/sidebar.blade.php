@@ -55,18 +55,18 @@
                 <li class="sidebar-item {{ $page == 'participans' ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i>
-                        <span>Peserta Ujian</span>
+                        <span>Master Data Siswa</span>
                     </a>
 
                     <ul class="submenu {{ $page == 'participans' ? 'active' : '' }}">
                         @can('peserta-list')
                         <li>
-                            <a href="{{ route('participant.index') }}">List Peserta</a>
+                            <a href="{{ route('participant.index') }}">List Data Siswa</a>
                         </li>
                         @endcan
                         @can('peserta-create')
                         <li>
-                            <a href="{{ route('participant.create') }}">Tambah Peserta Ujian</a>
+                            <a href="{{ route('participant.create') }}">Tambah Siswa</a>
                         </li>
                         @endcan
                     </ul>
@@ -79,13 +79,13 @@
                 <li class="sidebar-item {{ $page == 'teachers' ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="users" width="20"></i>
-                        <span>Management Guru</span>
+                        <span>Master Data Guru</span>
                     </a>
 
                     <ul class="submenu {{ $page == 'teachers' ? 'active' : '' }}">
                         @can('guru-list')
                         <li>
-                            <a href="{{ route('teachers.index') }}">List Guru</a>
+                            <a href="{{ route('teachers.index') }}">List Data Guru</a>
                         </li>
                         @endcan
                         @can('guru-create')
@@ -126,7 +126,7 @@
                 <li class="sidebar-item {{ $page == 'mapel' ? 'active' : '' }}  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="book" width="20"></i>
-                        <span>Mata Pelajaran</span>
+                        <span>Master Data Mapel</span>
                     </a>
 
                     <ul class="submenu {{ $page == 'mapel' ? 'active' : '' }}">
@@ -173,7 +173,7 @@
                 <li class="sidebar-item {{ $page == 'question' ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="server" width="20"></i>
-                        <span>Soal Ujian</span>
+                        <span>Master Data Soal</span>
                     </a>
 
                     <ul class="submenu {{ $page == 'question' ? 'active' : '' }}">
@@ -250,7 +250,7 @@
                 <li class="sidebar-item {{ $page == 'nilai' ? 'active' : '' }}">
                     <a href="{{route('nilai.index')}}" class='sidebar-link'>
                         <i data-feather="database" width="20"></i>
-                        <span>Nilai Ujian</span>
+                        <span>Report Hasil Ujian</span>
                     </a>
                 </li>
                 @endcan
