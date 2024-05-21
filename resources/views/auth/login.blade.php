@@ -7,7 +7,8 @@
     <title>Sign in</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-    {{-- <link rel="shortcut icon" href="{{asset('assets/images/favicon.svg')}}" type="image/x-icon"> --}}
+    {{--
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.svg')}}" type="image/x-icon"> --}}
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
 </head>
 
@@ -21,7 +22,7 @@
                         <div class="card-body">
                             <div class="text-center mb-5">
                                 {{-- <img src="assets/images/favicon.svg" height="48" class='mb-4'> --}}
-                                <h3>E-Learning</h3>
+                                <h3>CBT-LPIA</h3>
                                 <p>Masukkan Username & Password.</p>
                             </div>
                             <form action="{{ route('login') }}" method="POST">
@@ -29,15 +30,17 @@
                                 <div class="form-group position-relative has-icon-left">
                                     <label for="username">Username</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" id="username" placeholder="Enter your username">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            name="name" value="{{old('name')}}" id="username"
+                                            placeholder="Enter your username">
                                         <div class="form-control-icon">
                                             <i data-feather="user"></i>
                                         </div>
                                     </div>
                                     @error('name')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                                 <div class="form-group position-relative has-icon-left">
@@ -48,15 +51,17 @@
                                         </a> --}}
                                     </div>
                                     <div class="position-relative">
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter your password">
+                                        <input type="password"
+                                            class="form-control @error('password') is-invalid @enderror" name="password"
+                                            id="password" placeholder="Enter your password">
                                         <div class="form-control-icon">
                                             <i data-feather="lock"></i>
                                         </div>
                                     </div>
                                     @error('password')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
 
