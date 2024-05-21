@@ -1,34 +1,34 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid">
-        <section class="section">
-            @can('kelas-create')
-                <a href="{{ route('class.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-                    Tambah Kelas</a>
-            @endcan
-            <div class="card mt-2">
-                <div class="card-header">
-                    Data Class
-                </div>
-                <div class="card-body">
-                    <table class='table table-light' id="table_kelas" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+<div class="main-content container-fluid">
+    <section class="section">
+        @can('kelas-create')
+        <a href="{{ route('class.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
+            Tambah Kelas</a>
+        @endcan
+        <div class="card mt-2">
+            <div class="card-header">
+                Data Kelas
             </div>
-        </section>
-    </div>
-    <script type="application/javascript">
-        $(document).ready(function() {
+            <div class="card-body">
+                <table class='table table-light' id="table_kelas" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="application/javascript">
+    $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {
                 let data = sessionStorage.getItem('success');
@@ -113,5 +113,5 @@
                 }
             });
         }
-    </script>
+</script>
 @endsection

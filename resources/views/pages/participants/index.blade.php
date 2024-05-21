@@ -20,7 +20,7 @@
                             <th>Nama Peserta</th>
                             <th>Jenis Kelamin</th>
                             <th>Kelas</th>
-                            <th>Jurusan</th>
+                            <th>Kategori Kelas</th>
                             <th>action</th>
                         </tr>
                     </thead>

@@ -1,39 +1,39 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid">
-        <section class="section">
-            @can('soal-create')
-            <a href="{{ route('question.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-                Buat Soal Ujian Baru</a>
-            @endcan
-            <div class="card mt-2">
-                <div class="card-header">
-                    Data Soal Ujian
-                </div>
-                <div class="card-body">
-                    <table class='table table-light' id="table_question" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Kode Soal</th>
-                                <th>Type</th>
-                                <th>Guru</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Kelas</th>
-                                <th>Jurusan</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+<div class="main-content container-fluid">
+    <section class="section">
+        @can('soal-create')
+        <a href="{{ route('question.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
+            Buat Soal Ujian Baru</a>
+        @endcan
+        <div class="card mt-2">
+            <div class="card-header">
+                Data Soal Ujian
             </div>
-        </section>
-    </div>
-    <script type="application/javascript">
-        $(document).ready(function() {
+            <div class="card-body">
+                <table class='table table-light' id="table_question" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Soal</th>
+                            <th>Type</th>
+                            <th>Guru</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Kelas</th>
+                            <th>Kategori Kelas</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="application/javascript">
+    $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {
                 let data = sessionStorage.getItem('success');
@@ -133,5 +133,5 @@
                 }
             });
         }
-    </script>
+</script>
 @endsection

@@ -150,7 +150,7 @@
                 <li class="sidebar-item {{ $page == 'kelas' ? 'active' : '' }}  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i data-feather="trello" width="20"></i>
-                        <span>Kelas & Jurusan</span>
+                        <span>Kelas & Kategori</span>
                     </a>
 
                     <ul class="submenu {{ $page == 'kelas' ? 'active' : '' }}">
@@ -161,7 +161,7 @@
                         @endcan
                         @can('jurusan-list')
                         <li>
-                            <a href="{{ route('majors.index') }}">Jurusan</a>
+                            <a href="{{ route('majors.index') }}">Kategori</a>
                         </li>
                         @endcan
                     </ul>

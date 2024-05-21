@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="major" name="major" data-toggle="select">
-                            <option value="" selected>Select Jurusan</option>
+                            <option value="" selected>Select Kategori Kelas</option>
                             @foreach ($major as $item)
                             <option value="{{ $item->id }}">{{ $item->major }}</option>
                             @endforeach
@@ -53,7 +53,7 @@
                             <th>Nama</th>
                             <th>Ujian</th>
                             <th>Kelas</th>
-                            <th>Jurusan</th>
+                            <th>Kategori Kelas</th>
                             <th>Jawaban Benar Pilgan</th>
                             <th>Nilai Pilgan</th>
                             <th>Jawaban Benar Essay</th>

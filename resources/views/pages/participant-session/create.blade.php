@@ -1,174 +1,175 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid" style="margin-top: -30px !important">
-        <section class="section">
-            <a href="{{ route('participant-session.index') }}" class="btn icon icon-left btn-primary"><i data-feather="arrow-left"></i>
-                Kembali</a>
-            <div class="ml-4 mr-4 mt-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Tambah Peserta Per Sesi</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form id="form_participant-session" class="form form-horizontal">
-                                @csrf
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Sesi</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <select class="form-control" name="exam_session_id">
-                                                        <option value="">Pilih Sesi</option>
-                                                        @foreach ($sesi as $item)
-                                                            <option value="{{ $item->id }}"><b>{{ $item->name }}</b>
-                                                                ({{ $item->time_start }} - {{ $item->time_end }})
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="form-control-icon">
-                                                        <i data-feather="list"></i>
-                                                    </div>
-                                                </div>
-                                                <span class="text-danger" id="exam_session_id-error"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Tanggal Ujian</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="date" name="date"  class="form-control"
-                                                        id="first-name-icon">
-                                                    <div class="form-control-icon">
-                                                        <i data-feather="calendar"></i>
-                                                    </div>
-                                                </div>
-                                                <span class="text-danger" id="date-error"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Kode Ujian</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="input-group input-group-merge">
-                                                    <input id="exam_id" style="text-align: left" name="exam_id"
-                                                        class="form-control" placeholder="Masukkan Kode Ujian"
-                                                        type="hidden" autocomplete="off">
-                                                    <input id="exam_name" style="text-align: left" name=""
-                                                        class="form-control" placeholder="Masukkan Kode Ujian" type="text"
-                                                        autocomplete="off" readonly>
-                                                    <div class="form-control-icon">
-                                                        <i data-feather="server"></i>
-                                                    </div>
-                                                    <a href="javascript:void(0)" id="cari-ujian"
-                                                        class="search_button btn btn-outline-primary"><i
-                                                            class="fas fa-search"></i></a>
-                                                </div>
-                                                <span class="text-danger" id="exam_id-error"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mt-3">
-                                            <div class="form-group mr-5">
-                                                <div class="table-responsive">
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <label>Cari Berdasarkan Nomor Peserta</label>
-                                                            <div class="form-group has-icon-left mt-2">
-                                                                <div class="position-relative">
-                                                                    <input id="cari-nomor-peserta" class="form-control"
-                                                                        placeholder="Cari Nomor Peserta Ujian" type="text"
-                                                                        autocomplete="off">
-                                                                    <div class="form-control-icon">
-                                                                        <i data-feather="search"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <label>Cari Berdasarkan Kelas</label>
-                                                            <div class="form-group has-icon-left mt-2">
-                                                                <div class="position-relative">
-                                                                    <select class="form-control" id="kelas">
-                                                                        <option value="">Pilih Kelas</option>
-                                                                        @foreach ($class as $item)
-                                                                            <option value="{{ $item->id }}">
-                                                                                {{ $item->name }}
-                                                                            </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <div class="form-control-icon">
-                                                                        <i data-feather="trello"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <label>Cari Berdasarkan Jurusan</label>
-                                                            <div class="form-group has-icon-left mt-2">
-                                                                <div class="position-relative">
-                                                                    <select class="form-control" id="jurusan">
-                                                                        <option value="">Pilih Jurusan</option>
-                                                                        @foreach ($major as $item)
-                                                                            <option value="{{ $item->id }}">
-                                                                                {{ $item->major }}
-                                                                            </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <div class="form-control-icon">
-                                                                        <i data-feather="trello"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <table class="table" style="width: 100%">
-                                                        <thead class="bg-primary text-white">
-                                                            <tr>
-                                                                <th>
-                                                                    <div class='form-check'>
-                                                                        <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" id="check-all"
-                                                                                class="form-check-input form-check-secondary"
-                                                                                name="customCheck" id="customColorCheck3">
-                                                                            <label class="form-check-label text-white"
-                                                                                for="customColorCheck3">Pilih Semua</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </th>
-                                                                <th>Nomor Peserta</th>
-                                                                <th>Nama Peserta</th>
-                                                                <th>Kelas</th>
-                                                                <th>Jurusan</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="table_participant">
-                                                        </tbody>
-                                                    </table>
+<div class="main-content container-fluid" style="margin-top: -30px !important">
+    <section class="section">
+        <a href="{{ route('participant-session.index') }}" class="btn icon icon-left btn-primary"><i
+                data-feather="arrow-left"></i>
+            Kembali</a>
+        <div class="ml-4 mr-4 mt-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tambah Peserta Per Sesi</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form id="form_participant-session" class="form form-horizontal">
+                            @csrf
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Sesi</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <select class="form-control" name="exam_session_id">
+                                                    <option value="">Pilih Sesi</option>
+                                                    @foreach ($sesi as $item)
+                                                    <option value="{{ $item->id }}"><b>{{ $item->name }}</b>
+                                                        ({{ $item->time_start }} - {{ $item->time_end }})
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="form-control-icon">
+                                                    <i data-feather="list"></i>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 d-flex justify-content-end ">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <span class="text-danger" id="exam_session_id-error"></span>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <label>Tanggal Ujian</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="date" name="date" class="form-control"
+                                                    id="first-name-icon">
+                                                <div class="form-control-icon">
+                                                    <i data-feather="calendar"></i>
+                                                </div>
+                                            </div>
+                                            <span class="text-danger" id="date-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Kode Ujian</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="input-group input-group-merge">
+                                                <input id="exam_id" style="text-align: left" name="exam_id"
+                                                    class="form-control" placeholder="Masukkan Kode Ujian" type="hidden"
+                                                    autocomplete="off">
+                                                <input id="exam_name" style="text-align: left" name=""
+                                                    class="form-control" placeholder="Masukkan Kode Ujian" type="text"
+                                                    autocomplete="off" readonly>
+                                                <div class="form-control-icon">
+                                                    <i data-feather="server"></i>
+                                                </div>
+                                                <a href="javascript:void(0)" id="cari-ujian"
+                                                    class="search_button btn btn-outline-primary"><i
+                                                        class="fas fa-search"></i></a>
+                                            </div>
+                                            <span class="text-danger" id="exam_id-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <div class="form-group mr-5">
+                                            <div class="table-responsive">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label>Cari Berdasarkan Nomor Peserta</label>
+                                                        <div class="form-group has-icon-left mt-2">
+                                                            <div class="position-relative">
+                                                                <input id="cari-nomor-peserta" class="form-control"
+                                                                    placeholder="Cari Nomor Peserta Ujian" type="text"
+                                                                    autocomplete="off">
+                                                                <div class="form-control-icon">
+                                                                    <i data-feather="search"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <label>Cari Berdasarkan Kelas</label>
+                                                        <div class="form-group has-icon-left mt-2">
+                                                            <div class="position-relative">
+                                                                <select class="form-control" id="kelas">
+                                                                    <option value="">Pilih Kelas</option>
+                                                                    @foreach ($class as $item)
+                                                                    <option value="{{ $item->id }}">
+                                                                        {{ $item->name }}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <div class="form-control-icon">
+                                                                    <i data-feather="trello"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <label>Cari Berdasarkan Kategori Kelas</label>
+                                                        <div class="form-group has-icon-left mt-2">
+                                                            <div class="position-relative">
+                                                                <select class="form-control" id="jurusan">
+                                                                    <option value="">Pilih Kategori Kelas</option>
+                                                                    @foreach ($major as $item)
+                                                                    <option value="{{ $item->id }}">
+                                                                        {{ $item->major }}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <div class="form-control-icon">
+                                                                    <i data-feather="trello"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table" style="width: 100%">
+                                                    <thead class="bg-primary text-white">
+                                                        <tr>
+                                                            <th>
+                                                                <div class='form-check'>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" id="check-all"
+                                                                            class="form-check-input form-check-secondary"
+                                                                            name="customCheck" id="customColorCheck3">
+                                                                        <label class="form-check-label text-white"
+                                                                            for="customColorCheck3">Pilih Semua</label>
+                                                                    </div>
+                                                                </div>
+                                                            </th>
+                                                            <th>Nomor Peserta</th>
+                                                            <th>Nama Peserta</th>
+                                                            <th>Kelas</th>
+                                                            <th>Kategori Kelas</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_participant">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end ">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                    </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            @include('pages.participant-session.modal')
-        </section>
-    </div>
-    <script type="application/javascript">
-        $(document).ready(function() {
+        </div>
+        @include('pages.participant-session.modal')
+    </section>
+</div>
+<script type="application/javascript">
+    $(document).ready(function() {
 
             $('#check-all').click(function(event) {
                 if (this.checked) {
@@ -371,5 +372,5 @@
             $('#exam_name').val(kode);
             $('#exam').modal('hide');
         }
-    </script>
+</script>
 @endsection

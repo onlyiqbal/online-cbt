@@ -1,49 +1,49 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid">
-        <section class="section">
-            <a href="{{ route('majors.index') }}" class="btn icon icon-left btn-primary"><i data-feather="arrow-left"></i>
-               Kembali</a>
-            <div class="ml-4 mr-4 mt-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Add New Jurusan</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form id="form_majors" class="form form-horizontal">
-                                @csrf
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Jurusan</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group has-icon-left">
-                                                <div class="position-relative">
-                                                    <input type="text" name="major" class="form-control" placeholder="Jurusan"
-                                                        id="first-name-icon">
-                                                    <div class="form-control-icon">
-                                                        <i data-feather="list"></i>
-                                                    </div>
+<div class="main-content container-fluid">
+    <section class="section">
+        <a href="{{ route('majors.index') }}" class="btn icon icon-left btn-primary"><i data-feather="arrow-left"></i>
+            Kembali</a>
+        <div class="ml-4 mr-4 mt-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Tambah Kategori Kelas Baru</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form id="form_majors" class="form form-horizontal">
+                            @csrf
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Kategori</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" name="major" class="form-control"
+                                                    placeholder="Kategori" id="first-name-icon">
+                                                <div class="form-control-icon">
+                                                    <i data-feather="list"></i>
                                                 </div>
-                                                <span class="text-danger" id="major-error"></span>
                                             </div>
-                                        </div>
-                                        <div class="col-12 d-flex justify-content-end ">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <span class="text-danger" id="major-error"></span>
                                         </div>
                                     </div>
+                                    <div class="col-12 d-flex justify-content-end ">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                    </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-    <script type="application/javascript">
+        </div>
+    </section>
+</div>
+<script type="application/javascript">
     $(document).ready(function() {
         $('#form_majors').on('submit', function(e) {
             e.preventDefault();
@@ -74,5 +74,5 @@
         });
         })
     })
-    </script>
+</script>
 @endsection
