@@ -124,7 +124,7 @@
                                         <div class="form-group has-icon-left">
                                             <div class="position-relative">
                                                 <input name="shcool_name" type="text" name="password"
-                                                    class="form-control" placeholder="Nama Sekolah">
+                                                    class="form-control" placeholder="Nama Sekolah (Optional)">
                                                 <div class="form-control-icon">
                                                     <i data-feather="hard-drive"></i>
                                                 </div>

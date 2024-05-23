@@ -13,7 +13,8 @@ class Teacher extends Model
     public $autoincrement = false;
     public $keyType = 'string';
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id','id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

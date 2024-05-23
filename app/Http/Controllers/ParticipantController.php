@@ -93,13 +93,13 @@ class ParticipantController extends Controller
 
     public function generateid()
     {
-        $tgl = str_replace('-', '', date('Y-m-d'));
+        $tgl = str_replace('-', '', date('y-m-d'));
         $sql = Participant::max(DB::raw('substr(id, 10, 4)'));
         if (!empty($sql)) {
             $n = (int) $sql + 1;
-            $no = sprintf("%04s", $n);
+            $no = sprintf("%02s", $n);
         } else {
-            $no = "0001";
+            $no = "01";
         }
         return "P$tgl" . $no;
     }
@@ -113,7 +113,6 @@ class ParticipantController extends Controller
             'class' => 'required',
             'major' => 'required',
             'jenkel' => 'required',
-            // 'shcool_name' => 'required',
             'photo' => 'image|mimes:jpeg,png,jpg,svg|max:2048|nullable',
         ], [
             'fullname.required' => 'Nama Lengkap tidak boleh kosong !',
@@ -125,7 +124,6 @@ class ParticipantController extends Controller
             'class.required' => 'Kelas tidak boleh Kosong !',
             'major.required' => 'Jurusan tidak boleh kosong !',
             'jenkel.required' => 'Jenis Kelamin tidak boleh kosong !',
-            // 'shcool_name'       => 'Nama sekolah tidak boleh kosong !',
             'photo.image' => 'File tidak valid!',
             'photo.mimes' => 'File tidak valid!',
             'photo.max' => 'File tidak boleh lebih dari 2 MB!',

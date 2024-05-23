@@ -15,12 +15,13 @@ class MajorSeeder extends Seeder
     public function run()
     {
         $data = [
-            'TKJ',
-            'RPL',
-            'AKUTANSI'
+            'ENGLISH FOR SENIOR HIGH',
+            'ENGLISH FOR COLLEGE STUDENT AND PUBLIC',
+            'GRAPHIC DESIGN',
+            'OFFICE APPLICATIONS',
         ];
 
-        foreach ($data as $item){
+        foreach ($data as $item) {
             Major::create([
                 'major' => $item
             ]);

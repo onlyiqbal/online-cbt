@@ -170,7 +170,7 @@ class QuestionController extends Controller
 
         $id = IdGenerator::generate([
             'table' => 'questions',
-            'length' => 15,
+            'length' => 11,
             'prefix' => "$prefix-",
             'reset_on_prefix_change' => true
         ]);

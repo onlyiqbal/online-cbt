@@ -10,6 +10,7 @@ use Hash;
 use DataTables;
 use Illuminate\Support\Arr;
 use Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -24,20 +25,24 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        $data = User::role(['admin', 'siswa', 'guru'])->get();
+        $data = User::role(['admin', 'siswa', 'guru'])
+            ->with('participant', 'teacher')
+            ->get();
         $page = 'management_users';
         $auth = Auth::user();
 
         if ($request->ajax()) {
             return DataTables::of($data)
-                ->addColumn('name', function ($row) {
+                ->addColumn('fullname', function ($row) {
+                    if ($row->participant) {
+                        return $row->participant->fullname;
+                    } elseif ($row->teacher) {
+                        return $row->teacher->fullname;
+                    }
                     return $row->name;
                 })
-                ->addColumn('email', function ($row) {
-                    return $row->email;
-                })
-                ->addColumn('password', function ($row) {
-                    return $row->password;
+                ->addColumn('username', function ($row) {
+                    return $row->name;
                 })
                 ->addColumn('role', function ($row) {
                     if (!empty($row->getRoleNames())) {
@@ -91,7 +96,7 @@ class UserController extends Controller
         ]);
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        $input['password'] = Crypt::encrypt($input['password']);
 
         $user = User::create($input);
         $user->assignRole($request->role);

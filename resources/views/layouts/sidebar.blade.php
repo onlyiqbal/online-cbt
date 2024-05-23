@@ -254,14 +254,14 @@
                     </a>
                 </li>
                 @endcan
-                @can('clear-cache')
+                {{-- @can('clear-cache')
                 <li class="sidebar-item">
                     <a href="{{route('clear-cache.index')}}" class='sidebar-link'>
                         <i data-feather="refresh-cw" width="20"></i>
                         <span>Clear Cache</span>
                     </a>
                 </li>
-                @endcan
+                @endcan --}}
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

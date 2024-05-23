@@ -13,9 +13,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
+                            <th>Nama</th>
+                            <th>Username</th>
                             <th>Role</th>
                             <th>action</th>
                         </tr>
@@ -53,13 +52,10 @@
                         data: 'DT_RowIndex',
                     },
                     {
-                        data: 'name',
+                        data: 'fullname'
                     },
                     {
-                        data: 'email',
-                    },
-                    {
-                        data: 'password'
+                        data: 'username',
                     },
                     {
                         data: 'role',

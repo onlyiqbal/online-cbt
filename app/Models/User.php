@@ -12,8 +12,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
-    public function teacher(){
-        return $this->belongsTo(Teacher::class,'id','user_id');
+    public function participant()
+    {
+        return $this->hasOne(Participant::class, 'user_id');
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class, 'user_id');
     }
 
     /**

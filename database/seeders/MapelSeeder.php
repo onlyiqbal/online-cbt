@@ -15,8 +15,8 @@ class MapelSeeder extends Seeder
     public function run()
     {
         $data = [
-            'BAHASA INGGRISS',
-            'KOMPUTER'
+            'ADVANCED TENSES',
+            'WEB DESIGN BASICS'
         ];
 
         foreach ($data as $item) {
