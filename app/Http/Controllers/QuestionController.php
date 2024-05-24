@@ -13,6 +13,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\imports\QuestionImport;
 use Excel;
 use Response;
+use Illuminate\Support\Str;
 
 class QuestionController extends Controller
 {
@@ -68,7 +69,7 @@ class QuestionController extends Controller
                     }
                     if ($auth->can('soal-list')) {
                         $button .= '&nbsp;&nbsp;';
-                        $button .= '<a href="' . route('list-detail-question', $row->id) . '"><i class="fas fa-eye text-secondary"></i></a>';
+                        $button .= '<a href="' . route('view-detail-question', $row->id) . '"><i class="fas fa-eye text-secondary"></i></a>';
                     }
                     if ($auth->can('soal-delete')) {
                         $button .= '&nbsp;&nbsp;';
@@ -159,21 +160,22 @@ class QuestionController extends Controller
         }
 
 
-        $mapel = Mapel::findOrFail($request->mapel_id);
-        $prefix = substr($mapel->mapel, 0, 3);
-        $major = Major::findOrFail($request->major_id);
-        $prefix .= substr($major->major, 0, 3);
-        $class = ClassRoom::findOrFail($request->class_room_id);
-        $prefix .= substr($class->name, 0, 3);
+        // $mapel = Mapel::findOrFail($request->mapel_id);
+        // $prefix = substr($mapel->mapel, 0, 3);
+        // $major = Major::findOrFail($request->major_id);
+        // $prefix .= substr($major->major, 0, 3);
+        // $class = ClassRoom::findOrFail($request->class_room_id);
+        // $prefix .= substr($class->name, 0, 3);
 
         $data = $request->all();
 
-        $id = IdGenerator::generate([
-            'table' => 'questions',
-            'length' => 11,
-            'prefix' => "$prefix-",
-            'reset_on_prefix_change' => true
-        ]);
+        $id = uniqid();
+        // $id = IdGenerator::generate([
+        //     'table' => 'questions',
+        //     'length' => 15,
+        //     'prefix' => "$prefix-",
+        //     'reset_on_prefix_change' => true
+        // ]);
 
         DB::beginTransaction();
         try {
@@ -330,6 +332,72 @@ class QuestionController extends Controller
         }
 
         return view('pages.question.list-detail-question', compact('page', 'detail_questions', 'id'));
+    }
+
+    public function viewDetailQuestion(Request $request, $id)
+    {
+
+        $page = 'question';
+        $question = Question::findOrFail($id);
+
+        $detail_questions = DetailQuestion::where('question_id', $id)->get();
+        $auth = Auth::user();
+
+        if ($request->ajax()) {
+            return DataTables::of($detail_questions)
+                ->addColumn('image', function ($row) use ($id, $question) {
+                    if (is_null($row->image)) {
+                        $url = asset('img/imagePlaceholder.png');
+                    } else {
+                        $url = Storage::url('public/images/' . $id . '/' . $row->image);
+                    }
+                    return $image = '<img src="' . $url . '" class="rounded" style="width: 70px; height: 70px;">';
+                })
+                ->addColumn('question', function ($row) {
+                    return $row->question;
+                })
+                ->addColumn('choice_1', function ($row) {
+                    if ($row->choice_1 == 'NULL') {
+                        return 'Essay(null value)';
+                    }
+                    return $row->choice_1;
+                })
+                ->addColumn('choice_2', function ($row) {
+                    if ($row->choice_2 == 'NULL') {
+                        return 'Essay(null value)';
+                    }
+                    return $row->choice_2;
+                })
+                ->addColumn('choice_3', function ($row) {
+                    if ($row->choice_3 == 'NULL') {
+                        return 'Essay(null value)';
+                    }
+                    return $row->choice_3;
+                })
+                ->addColumn('choice_4', function ($row) {
+                    if ($row->choice_4 == 'NULL') {
+                        return 'Essay(null value)';
+                    }
+                    return $row->choice_4;
+                })
+                ->addColumn('choice_5', function ($row) {
+                    if ($row->choice_5 == 'NULL') {
+                        return 'Essay(null value)';
+                    }
+                    return $row->choice_5;
+                })
+                ->addColumn('key', function ($row) {
+                    if ($row->key == 'null') {
+                        return 'Essay(null value)';
+                    }
+                    return $row->key;
+                })
+                ->rawColumns(['image', 'question'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+
+        return view('pages.question.view-detail-question', compact('page', 'detail_questions', 'id'));
     }
 
     public function addDetailQuestion($id)

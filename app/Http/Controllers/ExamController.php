@@ -351,7 +351,6 @@ class ExamController extends Controller
 
     public function getQuestion(Request $request, $type)
     {
-
         $question = Question::where('type', $type)->get();
 
         if ($request->ajax()) {
@@ -365,7 +364,6 @@ class ExamController extends Controller
                     } else {
                         return 'Essay';
                     }
-
                 })
                 ->addColumn('action', function ($row) use ($type) {
                     $button = '';

@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('add-detail-question/{id}',      [QuestionController::class,'addDetailQuestion'])->name('add-detail-question');
     Route::delete('delete-detail-question/{id}',[QuestionController::class,'deleteDetailQuestion'])->name('delete-detail-question');
     Route::get('list-detail-question/{id}',     [QuestionController::class,'listDetailQuestion'])->name('list-detail-question');
+    Route::get('view-detail-question/{id}',     [QuestionController::class,'viewDetailQuestion'])->name('view-detail-question');
     Route::post('create-detail-question/{id}',  [QuestionController::class,'createDetailQuestion'])->name('create-detail-question');
     Route::get('edit-detail-question/{id}',     [QuestionController::class,'editDetailQuestion'])->name('edit-detail-question');
     Route::put('update-detail-question/{id}',   [QuestionController::class,'updateDetailQuestion'])->name('update-detail-question');
