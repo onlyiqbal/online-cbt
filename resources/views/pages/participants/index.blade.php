@@ -17,8 +17,8 @@
                             <th>No</th>
                             <th>Photo</th>
                             <th>No Peserta</th>
-                            <th>Nama Peserta</th>
-                            <th>Jenis Kelamin</th>
+                            <th>Nama</th>
+                            <th>L / P</th>
                             <th>Kelas</th>
                             <th>Kategori Kelas</th>
                             <th>action</th>

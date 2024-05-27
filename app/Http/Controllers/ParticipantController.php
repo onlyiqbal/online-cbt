@@ -56,9 +56,9 @@ class ParticipantController extends Controller
                 })
                 ->addColumn('jenkel', function ($row) {
                     if ($row->jen_kel == 'male') {
-                        return 'Laki-Laki';
+                        return 'L';
                     } elseif ($row->jen_kel == 'female') {
-                        return 'Perempuan';
+                        return 'P';
                     }
                 })
                 ->addColumn('action', function ($row) use ($auth) {
@@ -94,7 +94,7 @@ class ParticipantController extends Controller
     public function generateid()
     {
         $tgl = str_replace('-', '', date('y-m-d'));
-        $sql = Participant::max(DB::raw('substr(id, 10, 4)'));
+        $sql = Participant::max(DB::raw('substr(id, 8, 2)'));
         if (!empty($sql)) {
             $n = (int) $sql + 1;
             $no = sprintf("%02s", $n);
@@ -135,7 +135,7 @@ class ParticipantController extends Controller
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'password' => bcrypt('123456')
+                'password' => bcrypt('siswa123')
             ]);
             $user->assignRole('siswa');
 

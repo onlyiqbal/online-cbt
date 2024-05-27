@@ -1,39 +1,38 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid">
-        <section class="section">
-            @can('guru-create')
-            <a href="{{ route('teachers.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-                Tambah Guru</a>
-            @endcan
-            <div class="card mt-2">
-                <div class="card-header">
-                    Data Guru
-                </div>
-                <div class="card-body">
-                    <table class='table table-light' id="table_teacher" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Photo</th>
-                                <th>NIP</th>
-                                <th>Nama Guru</th>
-                                <th>Email</th>
-                                <th>Username</th>
-                                <th>Jenis Kelamin</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+<div class="main-content container-fluid">
+    <section class="section">
+        @can('guru-create')
+        <a href="{{ route('teachers.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
+            Tambah Guru</a>
+        @endcan
+        <div class="card mt-2">
+            <div class="card-header">
+                Data Guru
             </div>
-        </section>
-    </div>
-    <script type="application/javascript">
-        $(document).ready(function() {
+            <div class="card-body">
+                <table class='table table-light' id="table_teacher" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Photo</th>
+                            <th>NIP</th>
+                            <th>Nama Guru</th>
+                            <th>Email</th>
+                            <th>L / P</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="application/javascript">
+    $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {
                 let data = sessionStorage.getItem('success');
@@ -67,9 +66,6 @@
                     },
                     {
                         data: 'email',
-                    },
-                    {
-                        data: 'username',
                     },
                     {
                         data: 'jenkel',
@@ -133,5 +129,5 @@
                 }
             });
         }
-    </script>
+</script>
 @endsection

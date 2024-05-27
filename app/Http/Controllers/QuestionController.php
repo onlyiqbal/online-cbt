@@ -159,23 +159,21 @@ class QuestionController extends Controller
             ]);
         }
 
-
-        // $mapel = Mapel::findOrFail($request->mapel_id);
-        // $prefix = substr($mapel->mapel, 0, 3);
-        // $major = Major::findOrFail($request->major_id);
-        // $prefix .= substr($major->major, 0, 3);
-        // $class = ClassRoom::findOrFail($request->class_room_id);
-        // $prefix .= substr($class->name, 0, 3);
+        $mapel = Mapel::findOrFail($request->mapel_id);
+        $prefix = substr($mapel->mapel, 0, 3);
+        $major = Major::findOrFail($request->major_id);
+        $prefix .= substr($major->major, 0, 3);
+        $class = ClassRoom::findOrFail($request->class_room_id);
+        $prefix .= substr($class->name, 0, 3);
 
         $data = $request->all();
 
-        $id = uniqid();
-        // $id = IdGenerator::generate([
-        //     'table' => 'questions',
-        //     'length' => 15,
-        //     'prefix' => "$prefix-",
-        //     'reset_on_prefix_change' => true
-        // ]);
+        $id = IdGenerator::generate([
+            'table' => 'questions',
+            'length' => 15,
+            'prefix' => "$prefix-",
+            'reset_on_prefix_change' => true
+        ]);
 
         DB::beginTransaction();
         try {
