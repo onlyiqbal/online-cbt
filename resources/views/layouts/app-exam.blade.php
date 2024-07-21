@@ -31,7 +31,7 @@
 
     <nav style="background-color: rgb(28, 161, 223)" class="navbar navbar-header navbar-expand">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <h3 class="text-white">E-Learning</h3>
+            <h3 class="text-white">CBT-LPIA</h3>
             <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
                 <li class="dropdown">
                     <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">

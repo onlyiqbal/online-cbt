@@ -1,39 +1,40 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-content container-fluid">
-        <section class="section">
-            @can('peserta-sesi-create')
-            <a href="{{ route('participant-session.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-                Tambah Sesi Peserta</a>
-            @endcan
-            <div class="card mt-2">
-                <div class="card-header">
-                    Data Sesi Peserta
-                </div>
-                <div class="card-body">
-                    <table class='table table-light' id="table_participant-session" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Kode Ujian</th>
-                                <th>Tanggal Ujian</th>
-                                <th>Nama Ujian</th>
-                                <th>Peserta Ujian</th>
-                                <th>Sesi</th>
-                                <th>Status</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+<div class="main-content container-fluid">
+    <section class="section">
+        @can('peserta-sesi-create')
+        <a href="{{ route('participant-session.create') }}" class="btn icon icon-left btn-primary"><i
+                data-feather="edit"></i>
+            Tambah Sesi Peserta</a>
+        @endcan
+        <div class="card mt-2">
+            <div class="card-header">
+                Data Sesi Peserta
             </div>
-        </section>
-    </div>
-    <script type="application/javascript">
-        $(document).ready(function() {
+            <div class="card-body">
+                <table class='table table-light' id="table_participant-session" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Ujian</th>
+                            <th>Tanggal Ujian</th>
+                            <th>Nama Ujian</th>
+                            <th>Peserta Ujian</th>
+                            <th>Sesi</th>
+                            <th>Status</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="application/javascript">
+    $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {
                 let data = sessionStorage.getItem('success');
@@ -122,9 +123,7 @@
 
                         });
                     }
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swal.fire(
                         'Cancelled',
                         'Data is not deleted',
@@ -133,5 +132,5 @@
                 }
             });
         }
-    </script>
+</script>
 @endsection

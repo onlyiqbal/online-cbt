@@ -14,7 +14,6 @@
 
 <body>
     <div id="auth">
-
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-12 mx-auto">
@@ -30,9 +29,7 @@
                                 <div class="form-group position-relative has-icon-left">
                                     <label for="username">Username</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value="{{old('name')}}" id="username"
-                                            placeholder="Enter your username">
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name')}}" id="username" placeholder="Enter your username">
                                         <div class="form-control-icon">
                                             <i data-feather="user"></i>
                                         </div>
@@ -51,9 +48,7 @@
                                         </a> --}}
                                     </div>
                                     <div class="position-relative">
-                                        <input type="password"
-                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                            id="password" placeholder="Enter your password">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter your password">
                                         <div class="form-control-icon">
                                             <i data-feather="lock"></i>
                                         </div>
@@ -72,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="clearfix">
-                                    <button class="btn btn-primary float-end">Submit</button>
+                                    <button class="btn btn-primary float-end">Login</button>
                                 </div>
                             </form>
                         </div>

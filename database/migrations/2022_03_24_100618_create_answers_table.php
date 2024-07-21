@@ -18,20 +18,21 @@ class CreateAnswersTable extends Migration
             $table->integer('detail_questions_id');
             $table->string('answer')->nullable();
             $table->string('status')->nullable();
-            $table->string('participant_id',16);
+            $table->string('participant_id', 16);
             $table->foreign('participant_id')->references('id')
-                    ->on('participants')
-                    ->onUpdate('cascade');
+                ->on('participants')
+                ->onUpdate('cascade');
             $table->unsignedBigInteger('exam_id');
             $table->foreign('exam_id')
-                    ->references('id')
-                    ->on('exams')
-                    ->onUpdate('cascade');
+                ->references('id')
+                ->on('exams')
+                ->onUpdate('cascade');
             $table->unsignedBigInteger('participant_session_id');
             $table->foreign('participant_session_id')
-                    ->references('id')
-                    ->on('participant_sessions')
-                    ->onUpdate('cascade');
+                ->references('id')
+                ->on('participant_sessions')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('correct_by')->nullable();
             $table->timestamps();
         });
