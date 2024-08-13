@@ -1,72 +1,72 @@
 @extends('layouts.app')
 @section('content')
-<div class="main-content container-fluid">
-    <section class="section">
-        <div class="card mt-2">
-            <div class="card-header">
-                <h4>Nilai Ujian</h4>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
+    <div class="main-content container-fluid">
+        <section class="section">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h4>Nilai Ujian</h4>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input class="form-control" id="date" name="date" type="date">
+                <div class="row">
+                    <div class="col-md-4">
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" id="class" name="class" data-toggle="select">
-                            <option value="" selected>Select Kelas</option>
-                            @foreach ($class as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input class="form-control" id="date" name="date" type="date">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="class" name="class" data-toggle="select">
+                                <option value="" selected>Select Kelas</option>
+                                @foreach ($class as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="major" name="major" data-toggle="select">
+                                <option value="" selected>Select Kategori Kelas</option>
+                                @foreach ($major as $item)
+                                    <option value="{{ $item->id }}">{{ $item->major }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="exam" name="exam" data-toggle="select">
+                                <option value="" selected>Select Ujian</option>
+                                @foreach ($exam as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group" align="center">
+                            <button type="button" name="filter" id="filter" class="btn btn-primary">Filter</button>
+                            <button type="button" name="reset" id="reset" class="btn btn-danger">Reset</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" id="major" name="major" data-toggle="select">
-                            <option value="" selected>Select Kategori Kelas</option>
-                            @foreach ($major as $item)
-                            <option value="{{ $item->id }}">{{ $item->major }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select class="form-control" id="exam" name="exam" data-toggle="select">
-                            <option value="" selected>Select Ujian</option>
-                            @foreach ($exam as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group" align="center">
-                        <button type="button" name="filter" id="filter" class="btn btn-primary">Filter</button>
-                        <button type="button" name="reset" id="reset" class="btn btn-danger">Reset</button>
+                    <div class="col-md-4">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="card-body">
+                    <table class='table table-light' id="table_nilai" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Ujian</th>
+                                <th>Kelas</th>
+                                <th>Kategori Kelas</th>
+                                <th>Jawaban Benar Pilgan</th>
+                                <th>Nilai Pilgan</th>
+                                <th>Jawaban Benar Essay</th>
+                                <th>Nilai Essay</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
-            <div class="card-body">
-                <table class='table table-light' id="table_nilai" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Ujian</th>
-                            <th>Kelas</th>
-                            <th>Kategori Kelas</th>
-                            <th>Jawaban Benar Pilgan</th>
-                            <th>Nilai Pilgan</th>
-                            <th>Jawaban Benar Essay</th>
-                            <th>Nilai Essay</th>
-                            <th>Nilai Rata-Rata</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </section>
-</div>
-<script type="application/javascript">
+        </section>
+    </div>
+    <script type="application/javascript">
     $(document).ready(function() {
             fill_datatable();
 

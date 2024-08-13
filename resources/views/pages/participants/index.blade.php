@@ -1,38 +1,38 @@
 @extends('layouts.app')
 @section('content')
-<div class="main-content container-fluid">
-    <section class="section">
-        @can('peserta-create')
-        <a href="{{ route('participant.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-            Tambah Data Siswa</a>
-        @endcan
-        <div class="card mt-2">
-            <div class="card-header">
-                Data Peserta Ujian
-            </div>
-            <div class="card-body">
-                <table class='table table-light' id="table_participant" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Photo</th>
-                            <th>No Peserta</th>
-                            <th>Nama</th>
-                            <th>L / P</th>
-                            <th>Kelas</th>
-                            <th>Kategori Kelas</th>
-                            <th>action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="main-content container-fluid">
+        <section class="section">
+            @can('peserta-create')
+                <a href="{{ route('participant.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
+                    Tambah Data Siswa</a>
+            @endcan
+            <div class="card mt-2">
+                <div class="card-header">
+                    Data Peserta Ujian
+                </div>
+                <div class="card-body">
+                    <table class='table table-light' id="table_participant" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Photo</th>
+                                <th>No Peserta</th>
+                                <th>Nama</th>
+                                <th>L/P</th>
+                                <th>Kelas</th>
+                                <th>Kategori Kelas</th>
+                                <th>action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
-</div>
-<script type="application/javascript">
+        </section>
+    </div>
+    <script type="application/javascript">
     $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {

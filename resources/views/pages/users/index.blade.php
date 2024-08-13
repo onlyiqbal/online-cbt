@@ -1,33 +1,33 @@
 @extends('layouts.app')
 @section('content')
-<div class="main-content container-fluid">
-    <section class="section">
-        <a href="{{ route('users.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
-            Tambah User</a>
-        <div class="card mt-2">
-            <div class="card-header">
-                Data User
-            </div>
-            <div class="card-body">
-                <table class='table table-light' id="table_users" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th>action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="main-content container-fluid">
+        <section class="section">
+            {{-- <a href="{{ route('users.create') }}" class="btn icon icon-left btn-primary"><i data-feather="edit"></i>
+            Tambah User</a> --}}
+            <div class="card mt-2">
+                <div class="card-header">
+                    Data User
+                </div>
+                <div class="card-body">
+                    <table class='table table-light' id="table_users" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
-</div>
-<script type="application/javascript">
+        </section>
+    </div>
+    <script type="application/javascript">
     $(document).ready(function() {
 
             if (sessionStorage.getItem('success')) {
